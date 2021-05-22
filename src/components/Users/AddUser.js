@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Card from '../UI/Card';
 import Button from '../UI/Button'
+import ErrorModel from '../UI/ErrorModel';
 
 import './AddUser.css'
 
@@ -19,7 +20,7 @@ const AddUser = (props) => {
         }
 
 
-        console.log(enteredUsername, enteredAge)
+        props.onAddUser(enteredUsername, enteredAge);
         setEnteredUsername('')
         setEnteredAge('') //to return embty when submit
     }
@@ -31,6 +32,8 @@ const AddUser = (props) => {
     }
 
     return (
+      <div>
+        <ErrorModel title="An error occured!" message="Something went wrong!" />
       <Card >
         <form className="input" onSubmit={addUserHandler}>
           <label htmlFor="username">Username</label>
@@ -40,6 +43,7 @@ const AddUser = (props) => {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
+      </div>
     );
 }
 
