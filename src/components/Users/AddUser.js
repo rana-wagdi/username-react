@@ -3,6 +3,7 @@ import Card from '../UI/Card';
 import Button from '../UI/Button'
 
 import './AddUser.css'
+
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState('')
   const [enteredAge, setEnteredAge] = useState("");
@@ -10,6 +11,14 @@ const AddUser = (props) => {
 
     const addUserHandler = (event) => {
         event.preventDefault();
+        if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+          return;
+        }
+        if (+enteredAge < 1) {
+          return;
+        }
+
+
         console.log(enteredUsername, enteredAge)
         setEnteredUsername('')
         setEnteredAge('') //to return embty when submit
